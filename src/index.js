@@ -4,6 +4,7 @@ const sendPicture = require("./send-picture");
 const receiveUpload = require("./receive-upload");
 const memory = require("./memory");
 const logger = require("./logger");
+const serveFavicon = require("./serve-favicon.js");
 const app = express();
 
 const PORT = 80;
@@ -13,6 +14,7 @@ const METHOD_NOT_ALLOWED = 405;
 app.disable("x-powered-by");
 app.use(fileUpload());
 
+app.get("/favicon.ico", serveFavicon({ logger }));
 app.get("/", sendPicture({ logger, memory }));
 app.put("/", receiveUpload({ logger, memory }));
 app.all(
