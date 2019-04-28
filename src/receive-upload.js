@@ -1,6 +1,12 @@
 const prettyBytes = require("pretty-bytes");
 
-const receiveUpload = ({ logger, memory }) => (req, res) => {
+const receiveUpload = ({ logger, memory, sharedSecret }) => (req, res) => {
+  const givenSharedSecret = req.get("x-shared-secret");
+  if (givenSharedSecret !== sharedSecret) {
+    logger("Rejected upload with bad shared secret: " + givenSharedSecret);
+    return res.status(400).send("Nope");
+  }
+
   if (!req.files || Object.values(req.files).length !== 1) {
     return res.status(400).send("Need exactly one file");
   }
