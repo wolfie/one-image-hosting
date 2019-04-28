@@ -22,4 +22,4 @@ app.all(
     res.status(BAD_REQUEST).send("Nope")
 );
 
-app.listen(PORT, () => console.log(`started in ${PORT}`));
+app.listen(PORT, () => logger(`Server started on port ${PORT}`));
