@@ -5,3 +5,4 @@
   - Zoom on touch/click
 * Improve effects editing for mobile
   - Slide anywhere to modify edits
+* Dockerize
