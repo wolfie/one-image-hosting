@@ -24,12 +24,16 @@ const STATIC_PATH = `${__dirname}/../static`;
 app.disable("x-powered-by");
 app.use(fileUpload());
 
-app.get("/", sendPicture({ logger, memory }));
-app.put("/", receiveUpload({ logger, memory, sharedSecret }));
 app.get(
   "/favicon.ico",
   serveCachedFile({ filePath: `${STATIC_PATH}/favicon.ico`, logger })
 );
+app.get(
+  "/",
+  serveCachedFile({ filePath: `${STATIC_PATH}/index.html`, logger })
+);
+app.get("/image.jpg", sendPicture({ logger, memory }));
+app.put("/image.jpg", receiveUpload({ logger, memory, sharedSecret }));
 app.all(
   "/*",
   (req, res) =>
