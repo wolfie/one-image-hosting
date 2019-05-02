@@ -35,7 +35,7 @@
     </div>
 
     <script>
-      let effects = {
+      let effects = JSON.parse(localStorage.getItem("effects")) || {
         brightness: 100,
         contrast: 100
       };
@@ -45,6 +45,8 @@
         img.style.filter =
           `brightness(${effects.brightness}%) ` +
           `contrast(${effects.contrast}%)`;
+
+        localStorage.setItem("effects", JSON.stringify(effects, null, 0));
       };
 
       const changeHandler = e => {
@@ -54,12 +56,15 @@
         updateEffects();
       };
 
-      document
-        .getElementById("contrast")
-        .addEventListener("change", changeHandler);
-      document
-        .getElementById("brightness")
-        .addEventListener("change", changeHandler);
+      const contrast = document.getElementById("contrast");
+      contrast.addEventListener("change", changeHandler);
+      contrast.value = effects.contrast;
+
+      const brightness = document.getElementById("brightness");
+      brightness.addEventListener("change", changeHandler);
+      brightness.value = effects.brightness;
+
+      updateEffects();
     </script>
   </body>
 </html>

@@ -1,4 +1,6 @@
-* Use localStorage for image effects
+TODO
+====
+
 * Support file updating (watch filesystem, update cache)
 * Improve image layout
   - Center image
@@ -6,3 +8,9 @@
 * Improve effects editing for mobile
   - Slide anywhere to modify edits
 * Dockerize
+
+
+DONE
+====
+
+* Use localStorage for image effects
