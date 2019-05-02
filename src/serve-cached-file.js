@@ -1,8 +1,8 @@
 const fs = require("fs");
 
-let fileCache = null;
-
 const serveFavicon = ({ filePath, logger }) => {
+  let fileCache = null;
+
   fs.readFile(filePath, (err, data) => {
     if (err) {
       logger(
