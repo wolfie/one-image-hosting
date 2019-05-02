@@ -1,7 +1,6 @@
 TODO
 ====
 
-* Support file updating (watch filesystem, update cache)
 * Improve image layout
   - Center image
   - Zoom on touch/click
@@ -13,4 +12,5 @@ TODO
 DONE
 ====
 
+* Support file updating (watch filesystem, update cache)
 * Use localStorage for image effects

@@ -3,18 +3,22 @@ const fs = require("fs");
 const serveFavicon = ({ filePath, logger }) => {
   let fileCache = null;
 
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      logger(
-        err.code === "ENOENT"
-          ? `${filePath} does not exist, so no file will be served`
-          : `File reading error: ${err}`
-      );
-    } else {
-      logger(`Found ${filePath}. Will cache and use that`);
-      fileCache = data;
-    }
-  });
+  const updateCache = () =>
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        logger(
+          err.code === "ENOENT"
+            ? `${filePath} does not exist, so no file will be served`
+            : `File reading error: ${err}`
+        );
+      } else {
+        logger(`Found ${filePath}. Will cache and use that`);
+        fileCache = data;
+      }
+    });
+
+  fs.watchFile(filePath, updateCache);
+  updateCache();
 
   return (req, res) => {
     if (fileCache === null) {
