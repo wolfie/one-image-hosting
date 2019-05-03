@@ -3,6 +3,7 @@ TODO
 
 * Autorefresh the image
 * Improve image layout
+  - Fix image scaling to not squish the image
   - Center image
   - Zoom on touch/click
 * Improve effects editing for mobile
