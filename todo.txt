@@ -1,6 +1,7 @@
 TODO
 ====
 
+* Autorefresh the image
 * Improve image layout
   - Center image
   - Zoom on touch/click
