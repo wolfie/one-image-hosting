@@ -1,7 +1,8 @@
 TODO
 ====
 
-* Autorefresh the image
+* Parameterize the autorefresh interval
+  - Env variable, maybe?
 * Improve effects editing for mobile
   - Slide anywhere to modify edits
 * Dockerize
@@ -10,6 +11,7 @@ TODO
 DONE
 ====
 
+* Autorefresh the image
 * Improve image layout
   - Fix image scaling to not squish the image
   - Center image

@@ -52,6 +52,7 @@
         contrast: 100
       };
 
+      /** @type {HTMLImageElement} */
       const img = document.getElementById("img");
       img.addEventListener("click", () => {
         img.classList.toggle("zoomed-out");
@@ -81,6 +82,10 @@
       brightness.value = effects.brightness;
 
       updateEffects();
+
+      setInterval(() => {
+        img.src = "image.jpg?random=" + Math.random();
+      }, 60000);
     </script>
   </body>
 </html>
