@@ -2,10 +2,6 @@ TODO
 ====
 
 * Autorefresh the image
-* Improve image layout
-  - Fix image scaling to not squish the image
-  - Center image
-  - Zoom on touch/click
 * Improve effects editing for mobile
   - Slide anywhere to modify edits
 * Dockerize
@@ -14,5 +10,9 @@ TODO
 DONE
 ====
 
+* Improve image layout
+  - Fix image scaling to not squish the image
+  - Center image
+  - Zoom on touch/click
 * Support file updating (watch filesystem, update cache)
 * Use localStorage for image effects
