@@ -96,11 +96,16 @@
       const refreshCountdown = document.getElementById("refresh-countdown");
       const refreshImage = () => {
         img.src = "image.jpg?random=" + Math.random();
-        refreshCountdown.style.transition = "";
-        refreshCountdown.style.width = "";
+
+        // sometimes the transition remains unpainted and I think this is the most
+        // robust way to force proper repaints in between
         requestAnimationFrame(() => {
-          refreshCountdown.style.transition = `${INTERVAL / 1000}s linear`;
-          refreshCountdown.style.width = "0";
+          refreshCountdown.style.transition = "";
+          refreshCountdown.style.width = "";
+          requestAnimationFrame(() => {
+            refreshCountdown.style.transition = `${INTERVAL / 1000}s linear`;
+            refreshCountdown.style.width = "0";
+          });
         });
       };
       setInterval(refreshImage, INTERVAL);
