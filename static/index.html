@@ -10,13 +10,13 @@
       }
       .image-container {
         width: 100%;
-        max-height: calc(100vh - 50px);
+        max-height: calc(100vh - 55px);
         overflow: auto;
         text-align: center;
       }
       img.zoomed-out {
         max-width: 100vw;
-        max-height: calc(100vh - 50px);
+        max-height: calc(100vh - 60px);
         cursor: zoom-in;
       }
       img.zoomed-in {
@@ -31,12 +31,20 @@
       .control input {
         flex: 1;
       }
+
+      #refresh-countdown {
+        width: 100%;
+        transition: width 0s linear;
+        height: 5px;
+        background: blue;
+      }
     </style>
   </head>
   <body>
     <div class="image-container">
       <img id="img" src="image.jpg" alt="image" class="zoomed-out" />
     </div>
+    <div id="refresh-countdown"></div>
     <div class="control">
       <label for="brightness">Brightness</label>
       <input id="brightness" type="range" min="0" max="200" step="0.1" />
@@ -47,6 +55,8 @@
     </div>
 
     <script>
+      const INTERVAL = 60000;
+
       let effects = JSON.parse(localStorage.getItem("effects")) || {
         brightness: 100,
         contrast: 100
@@ -83,9 +93,18 @@
 
       updateEffects();
 
-      setInterval(() => {
+      const refreshCountdown = document.getElementById("refresh-countdown");
+      const refreshImage = () => {
         img.src = "image.jpg?random=" + Math.random();
-      }, 60000);
+        refreshCountdown.style.transition = "";
+        refreshCountdown.style.width = "";
+        requestAnimationFrame(() => {
+          refreshCountdown.style.transition = `${INTERVAL / 1000}s linear`;
+          refreshCountdown.style.width = "0";
+        });
+      };
+      setInterval(refreshImage, INTERVAL);
+      refreshImage();
     </script>
   </body>
 </html>

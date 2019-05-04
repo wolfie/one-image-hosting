@@ -11,6 +11,7 @@ TODO
 DONE
 ====
 
+* Image reload time indicator
 * Autorefresh the image
 * Improve image layout
   - Fix image scaling to not squish the image
