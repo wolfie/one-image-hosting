@@ -5,12 +5,12 @@ TODO
   - Env variable, maybe?
 * Improve effects editing for mobile
   - Slide anywhere to modify edits
-* Dockerize
 
 
 DONE
 ====
 
+* Dockerize
 * Image reload time indicator
 * Autorefresh the image
 * Improve image layout
